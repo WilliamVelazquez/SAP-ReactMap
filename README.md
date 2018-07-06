@@ -1,13 +1,13 @@
-# Generation-MexicoMaps
+# SAP-Map with React
 
 Web Application using Google Maps API with Front-End using React, developed by [William Velazquez](https://twitter.com/@WilliamVlazquez).
 
 ## Aplication description
 
-- Mexico city Map
-- Markers of different stores
-- Find your current Location
-- Add your favorite stores (Find them and remove them)
+- Mexico Map
+- Markers of different places
+- Find information about the selected place
+- Filter the places
 
 ## Instalation
 
