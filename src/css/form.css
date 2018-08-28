@@ -1,11 +1,72 @@
-.plazasContainer{
-    margin-top: 10px;
+/*@Author William E. Velázquez Amarra - williamvelazquez.isc@gmail.com*/
+body{
+	margin:0;
 }
 
-.formSAP{
-	padding: 20px;
+.gm-iv-address {
+	height: 56px !important;
+}
+
+.version-actual{
+	font-size: 14px;
+	margin-bottom: 10px;
+}
+
+.plazasContainer{
+  margin-top: 10px;
+}
+
+.alertWarning{
+	margin-bottom: 15px;
+  padding: 15px;
+  font-size: 18px;
+}
+
+.mapContainer{
+	height: 450px;
+	margin-bottom: 15px;
+  padding-left: 0px;
+}
+
+.loadingContainer{
+	height: 400px;
+	margin-bottom: 25px;
+}
+
+.fullSpace{
+	width: 100%;
+	height: 100%;
+}
+
+.panel-group{
+	/*padding-left: 15px;
+  padding-right: 15px;*/
+
+	margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+.panel-icon{
+	/*justify-self: right;*/
+  float: right;
+}
+
+.panel-group .panel-title{
 	display: grid;
-  	grid-gap: 0px 50px;
+  /*grid-template-columns: 1fr 25px;*/
+}
+
+.panel-group .panel-title a{
+	text-decoration: none;
+}
+
+
+.formSAP{
+	/*padding: 20px;*/
+  padding: 15px;
+  padding-top: 5px;
+	display: grid;
+	grid-gap: 0px 50px;
 	/*grid-template-columns: 1fr 1fr;*/
 }
 .formSAP > div{
@@ -17,7 +78,7 @@
 }
 .formSAP label{
 	/*font-weight: normal;*/
-  	font-size: 15px;
+	font-size: 15px;
 }
 .formSAP select, .formSAP input{
  	border: none;
@@ -26,12 +87,97 @@
 .formSAP a{
 	/*margin-left: auto;
 	margin: 0 auto;*/
-  	display: block;
-  	width: 70%;
-  	font-weight: 400;
-  	justify-self: center;
-  	align-self: center;
-  	/*width: 160px;*/
+	display: block;
+	width: 70%;
+	font-weight: 400;
+	justify-self: center;
+	align-self: center;
+	/*width: 160px;*/
+}
+
+.icon-flipped {
+  transform: scaleX(-1);
+  -moz-transform: scaleX(-1);
+  -webkit-transform: scaleX(-1);
+  -ms-transform: scaleX(-1);
+}
+
+.image-flipped {
+  -moz-transform: scaleX(-1);
+  -o-transform: scaleX(-1);
+  -webkit-transform: scaleX(-1);
+  transform: scaleX(-1);
+  filter: FlipH;
+  -ms-filter: "FlipH";
+}
+
+.btnRow{
+	/*padding: 20px;*/
+	display: grid;
+	margin-bottom: 20px;
+  /*grid-template-columns: 1fr 100px;*/
+}
+
+.btnRow a{
+	/*margin-left: auto;
+	margin: 0 auto;*/
+	display: block;
+	width: 70%;
+	font-weight: 400;
+	justify-self: center;
+	align-self: center;
+	/*width: 160px;*/
+}
+
+#btnSearchPlazas{
+	min-width: 175px;
+}
+
+.miniBtnRow{
+	display: grid;
+	grid-column-gap: 10px;
+  grid-auto-flow: column;
+  /*margin-bottom: 15px;*/
+  margin-bottom: 10px;
+}
+
+.infoWindow{
+	color: black;
+  text-align: left;
+  margin-left: 15px;
+  margin-top: -25px;
+  /*font-family: initial;*/
+  font-family: inherit;
+}
+.infoWindow .title{
+	text-align: center;
+	/*border-bottom: 1px solid #000000;*/
+}
+.infoWindow p{
+	margin: 0 0 1px;
+	font-size: 15px;
+  font-weight: 500;
+}
+
+.disponibilidadInfo{
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+  grid-gap: 5px;
+	text-align: center;
+  font-size: 20px;
+}
+
+.availableInfo{
+  /*border: 2px solid #75d864;
+  color: #75d864;*/
+  border: 2px solid #39b923;
+  color: #39b923;
+  padding: 0px 3px;
+}
+.unavailableInfo{
+  border: 2px solid #ee3840;
+  color: #ee3840;
+  padding: 0px 3px;
 }
 
 @media (min-width: 767px) {
@@ -48,5 +194,8 @@
 	}
 	.formSAP{
 		grid-template-columns: 1fr;
+	}
+	.panel-group .panel-title{
+	  font-size: 15px;
 	}
 }

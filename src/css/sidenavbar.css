@@ -1,0 +1,479 @@
+/*@Author William E. Velázquez Amarra - williamvelazquez.isc@gmail.com*/
+a{
+    text-decoration: none !important;
+    outline: 0;
+    cursor: pointer !important;
+}
+
+a.noLink{
+    cursor: unset !important;
+}
+
+@media (max-width: 767px) {
+    .SideNavBar-container{
+        display: none;
+    }
+}
+
+*{
+    margin: 0;
+}
+
+.SideNavBar{
+    display: -webkit-box;
+    display: -moz-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: box;
+    display: flex;
+    -webkit-box-align: stretch;
+    -moz-box-align: stretch;
+    -o-box-align: stretch;
+    -ms-flex-align: stretch;
+    -webkit-align-items: stretch;
+    align-items: stretch;
+    -webkit-box-pack: justify;
+    -moz-box-pack: justify;
+    -o-box-pack: justify;
+    -ms-flex-pack: justify;
+    -webkit-justify-content: space-between;
+    justify-content: space-between;
+    position: absolute;
+    z-index: 15;
+    top: 0;
+    left: 0;
+    /*min-height: 100vh;*/
+    height: 350px;
+    margin: 0;
+    /*margin-top: 46px;
+    margin-top: 50px;*/
+    margin-top: 66px;
+}
+
+.SideNavBar-folded{
+    background: #f5f5f5;
+    width: 250px;
+    /*overflow-y: scroll;*/
+    /*height: 100vh;*/
+    height: 350px;
+    font-family: Lato,sans-serif;
+    font-size: 16px;
+    color: #1c3643;
+    text-rendering: optimizeLegibility;
+    /*max-height: 540px;*/
+    max-height: 350px;
+}
+
+.SideNavBar-header{
+    display: -webkit-box;
+    display: -moz-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: box;
+    display: flex;
+    padding: 7px 15px;
+    -webkit-box-align: center;
+    -moz-box-align: center;
+    -o-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+    color: #273b47;
+}
+
+figure{
+    display: block;
+    -webkit-margin-before: 1em;
+    -webkit-margin-after: 1em;
+    -webkit-margin-start: 40px;
+    -webkit-margin-end: 40px;
+}
+
+.SideNavBar-headerBadge{
+    margin-right: 12px !important;
+    margin: 0;
+}
+
+.SideNavBar-headerBadge img{
+    object-fit: cover;
+    border: none;
+    vertical-align: bottom;
+    max-width: 100%;
+}
+
+p{
+    display: block;
+    -webkit-margin-before: 1em;
+    -webkit-margin-after: 1em;
+    -webkit-margin-start: 0px;
+    -webkit-margin-end: 0px;
+}
+
+.SideNavBar-headerTitle{
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.SideNavBar-completeList{
+    
+}
+
+.SideNavBar-listObject{
+    
+}
+
+.SideNavBar-listConcept{
+    display: -webkit-box;
+    display: -moz-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: box;
+    display: flex;
+    -webkit-box-align: center;
+    -moz-box-align: center;
+    -o-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+    padding: 8px 20px;
+    min-height: 34px;
+    color: #273b47;
+    font-weight: 700;
+    font-size: 13px;
+    background: #dddddc;
+    font-family: Open Sans,Arial;
+    justify-content: center;
+}
+
+.SideNavBar-listContents{
+    
+}
+
+.SideNavBar-listContent.is-active{
+    border-top: 1px solid #97c941;
+    border-bottom: 1px solid #97c941;
+    border-left: 8px solid #97c941;
+}
+
+.SideNavBar-listContent{
+    -webkit-box-align: center;
+    -moz-box-align: center;
+    -o-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: box;
+    display: flex;
+    -webkit-box-pack: justify;
+    -moz-box-pack: justify;
+    -o-box-pack: justify;
+    -ms-flex-pack: justify;
+    -webkit-justify-content: space-between;
+    justify-content: space-between;
+    font-family: Open Sans,Arial;
+    font-size: 12px;
+    color: #273b47;
+    border-bottom: 1px solid #d6d6d6;
+    padding: 8px 20px;
+    min-height: 34px;
+    box-sizing: unset;
+}
+
+.SideNavBar-contentName{
+    display: block;
+    display: -webkit-box;
+    max-width: 187px;
+    max-height: 34px;
+    line-height: 1.4;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    /*overflow: hidden;*/
+    overflow: auto;
+    -o-text-overflow: ellipsis;
+    text-overflow: ellipsis;
+}
+
+.SideNavBar-check{
+    position: relative;
+    color: #d6d6d6;
+    font-size: 18px;
+}
+
+.SideNavBar-check.is-seen{
+    color: #98ca3f;
+}
+/*
+.icon-check_B:before {
+    content: "\E007";
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    font-family: icomoon;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: 400;
+    speak: none;
+    text-transform: none;
+}
+*/
+.SideNavBar-check.nextContentSeen:after{
+    background: #0791e6;
+}
+
+.SideNavBar-check:after{
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    content: "";
+    position: absolute;
+    /*top: 16px;*/
+    top: 18px;
+    height: 37px;
+    width: 3px;
+    background: #d6d6d6;
+}
+
+.SideNavBar-listContent:last-child .SideNavBar-check:after{
+    height: 0;
+}
+
+
+.SideNavBar-footer{
+    display: -webkit-box;
+    display: -moz-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: box;
+    display: flex;
+    padding: 9px 15px 13px 10px;
+    background: #273b47;
+    color: #fff;
+    font-size: 12px;
+    -webkit-box-align: center;
+    -moz-box-align: center;
+    -o-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -moz-box-pack: center;
+    -o-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+}
+
+.SideNavBar-footer.atBottom{
+    position: absolute;
+    bottom: 0;
+    width: 250px;
+}
+
+.SideNavBar-footerBadge{
+    -webkit-flex-shrink: 0;
+    flex-shrink: 0;
+    margin-right: 13px !important;
+    margin: 0;
+}
+
+.SideNavBar-footerBadge img{
+    object-fit: cover;
+    border: none;
+    vertical-align: bottom;
+    max-width: 100%;
+}
+
+.SideNavBar-footerInfo{
+    -webkit-box-flex: 1;
+    -moz-box-flex: 1;
+    -o-box-flex: 1;
+    box-flex: 1;
+    -webkit-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+}
+
+.SideNavBar-footerTitle{
+    margin: 0;
+}
+
+.SideNavBar-unfolded.smallArrow{
+    /*width: 30px;*/
+    width: 20px;
+}
+
+.SideNavBar-unfolded.smallArrow .SideNavBar-button{
+    /*font-size: 25px;
+    padding: 0px 3px;*/
+    font-size: 20px;
+}
+
+.SideNavBar-unfolded.smallArrow .SideNavBar-button.centeredBtn{
+    top: 0;
+    left: 0;
+    margin: auto;
+}
+
+
+.SideNavBar-unfolded{
+    background: #0791e6;
+    max-width: 30px;
+    -webkit-box-pack: stretch;
+    -moz-box-pack: stretch;
+    -o-box-pack: stretch;
+    -ms-flex-pack: stretch;
+    -webkit-justify-content: stretch;
+    justify-content: stretch;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: box;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -moz-box-orient: vertical;
+    -o-box-orient: vertical;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-align: center;
+    -moz-box-align: center;
+    -o-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+    /*max-height: 540px;*/
+    max-height: 350px;
+}
+
+.SideNavBar-unfolded.shadow{
+    -webkit-box-shadow: 0 0 20px #888;
+    box-shadow: 0 0 20px #888;
+}
+
+.SideNavBar-button{
+    max-width: 100%;
+    background: #0776a9;
+    height: 60px;
+    color: #fff;
+    font-size: 35px;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: box;
+    display: flex;
+    -webkit-box-align: center;
+    -moz-box-align: center;
+    -o-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -moz-box-pack: center;
+    -o-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    line-height: 100%;
+    cursor: pointer !important;
+}
+/*
+.icon-arrow-right_A:before{
+    content: "\E644";
+    -webkit-font-smoothing: antialiased;
+    font-family: icomoon;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: 400;
+    speak: none;
+    text-transform: none;
+}
+
+.icon-arrow-left_A:before{
+    content: "\E643";
+    -webkit-font-smoothing: antialiased;
+    font-family: icomoon;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: 400;
+    speak: none;
+    text-transform: none;
+}
+*/
+.SideNavBar-contents{
+    margin-top: 44px;
+    max-height: 72vh;
+
+    font-family: Lato,sans-serif;
+    font-size: 16px;
+    color: #1c3643;
+    text-rendering: optimizeLegibility
+}
+
+.SideNavBar-content{
+    display: -webkit-box;
+    display: -moz-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: box;
+    display: flex;
+    -webkit-box-align: center;
+    -moz-box-align: center;
+    -o-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -moz-box-pack: center;
+    -o-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-orient: vertical;
+    -moz-box-orient: vertical;
+    -o-box-orient: vertical;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    font-size: 12px;
+    font-weight: 400;
+    color: #0791e6;
+    width: 22px;
+    height: 22px;
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
+    background: #0776a9;
+    margin-bottom: 30px;
+    position: relative;
+}
+
+.SideNavBar-content.is-active{
+    background: #fff;
+    color: #054556;
+    font-weight: 700;
+}
+
+.SideNavBar-content:after{
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    top: 22px;
+    position: absolute;
+    content: "";
+    width: 3px;
+    min-height: 30px;
+    background: #0776a9;
+    cursor: default;
+}
+
+.SideNavBar-content:last-child:after{
+    width: 0;
+    height: 0;
+    content: "";
+}
