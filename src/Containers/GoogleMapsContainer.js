@@ -92,8 +92,6 @@ class GoogleMapsContainer extends PureComponent {
     else{console.log("Sin marcadores disponibles!");}
   }
 
-
-
   render() {
     return (
       <MapContent 
