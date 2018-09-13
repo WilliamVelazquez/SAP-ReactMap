@@ -1,0 +1,24 @@
+/*@Author William E. Velázquez Amarra - williamvelazquez.isc@gmail.com*/
+.youtube-row{
+  text-align: right;
+  margin-top: 15px;
+}
+
+.youtube-link{
+  text-decoration: none;
+  color: #545454;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+
+.youtube-link:hover,
+.youtube-link:link,
+.youtube-link:active,
+.youtube-link:visited{
+  text-decoration: none;
+}
+
+.yt-img{
+  height: 25px;
+}

@@ -1,0 +1,48 @@
+/*@Author William E. Velázquez Amarra - williamvelazquez.isc@gmail.com*/
+.formSAP{
+	/*padding: 20px;*/
+  padding: 15px;
+  padding-top: 5px;
+	display: grid;
+	grid-gap: 0px 50px;
+	/*grid-template-columns: 1fr 1fr;*/
+}
+.formSAP > div{
+	margin-bottom: 10px;
+}
+.formSAP label, .formSAP select, .formSAP input{
+	display: block; 
+	width: 100%;
+}
+.formSAP label{
+	/*font-weight: normal;*/
+	font-size: 15px;
+}
+.formSAP select, .formSAP input{
+ 	border: none;
+	border-bottom: 1px solid;
+}
+.formSAP a{
+	/*margin-left: auto;
+	margin: 0 auto;*/
+	display: block;
+	width: 70%;
+	font-weight: 400;
+	justify-self: center;
+	align-self: center;
+	/*width: 160px;*/
+}
+
+@media (min-width: 767px) {
+	.formSAP{
+		grid-template-columns: 1fr 1fr;
+	}
+}
+@media (max-width: 767px) {
+	.formSAP{
+		grid-template-columns: 1fr;
+	}
+	.formSAP label{
+		font-size: 13px;
+	}
+}

@@ -1,29 +1,11 @@
 //@Author William E. Velázquez Amarra - williamvelazquez.isc@gmail.com
-import React, {PureComponent} from 'react';
-import { GoogleApiWrapper, InfoWindow, Map, Marker } from 'google-maps-react';
+import React, { PureComponent } from 'react';
+import { GoogleApiWrapper } from 'google-maps-react';
 
-import Loader from '../Components/Loader';
-import MarkPoint from '../Components/MarkPoint';
-import SideNavBar from '../Components/SideNavBar';
-
-import Available from '../svg/Available.svg'
-import Unavailable from '../svg/Unavailable.svg'
+import MapContent from '../Components/MapContent';
+import LoadingContainer from '../Components/LoadingContainer';
 
 const API_KEY = "AIzaSyB1f1jgpIsdHCg1d_LmXzhI5a4rbi1JjWk";
-
-//MEXICO lat and lng
-const MEXICO = {
-  lat:19.4326077,
-  lng:-99.13320799999997
-};
-
-//DURANGO lat and lng
-const DURANGO = {
-  lat:25.57005292,
-  lng:-103.5000238
-};
-
-const MAP_ZOOM = 16;
 
 class GoogleMapsContainer extends PureComponent {
   state = {
@@ -31,8 +13,8 @@ class GoogleMapsContainer extends PureComponent {
     map: null,
     showingInfoWindow: false,
     activeMarker: {},
-    selectedPlace: {}
-    // markers: []
+    selectedPlace: {},
+    filteredMarkers: []
   }
 
   componentWillReceiveProps(newProps){
@@ -41,11 +23,12 @@ class GoogleMapsContainer extends PureComponent {
       this.setState({
         showingInfoWindow: false,
         activeMarker: {},
-        selectedPlace: {}
+        selectedPlace: {},
+        filteredMarkers: []
       });
     }
   }
-
+  
   onMarkerClick = (props, marker, event) => {
     this.setState({
       selectedPlace: props,
@@ -69,7 +52,7 @@ class GoogleMapsContainer extends PureComponent {
   centerMap=(location)=>{
     const { map, google } = this.state;
 
-    var latLng = new google.maps.LatLng(location.lat, location.lng);
+    let latLng = new google.maps.LatLng(location.lat, location.lng);
     map.panTo(latLng);
     // //console.log("props-->", this.props.google.maps);
     // console.log("map-->",map);
@@ -89,126 +72,52 @@ class GoogleMapsContainer extends PureComponent {
       //google,
       map
     });
-    // console.log("mapProps",mapProps);
-    // console.log("map",map);
-    // console.log("google",google);
-
-    // //var latLng = new google.maps.LatLng(19.4326077, -99.13320799999997); //Makes a latlng
-    // // var latLng = new google.maps.LatLng(DURANGO.lat, DURANGO.lng); //Makes a latlng
-    //  var latLngMX = new google.maps.LatLng(MEXICO.lat, MEXICO.lng); //Makes a latlng
-    // // var mapInstance = new google.maps.Map(document.getElementById('mapInst'), {
-    // //   zoom: 16,
-    // //   center: latLng
-    // // });
-    // // console.log("mapInstance",mapInstance);
-
-    
-    // map.panTo(latLngMX);
-
-    // //var latLng = new google.maps.LatLng(19.4326077, -99.13320799999997); //Makes a latlng
-
-    // // google.center(MEXICO);
-    // // setTimeout(() => {
-    // //   mapInstance.panTo(latLngMX)
-    // // },5000);
-    
-    // console.log("ready->",props);
-    //const service = new google.maps.places.PlacesService(map);
   }
 
-  render() {
-    const availableMarker = {
-      //url: 'http://image.flaticon.com/icons/svg/252/252025.svg',
-      url: Available,//'./src/svg/Available.svg',
-      scaledSize: new google.maps.Size(40, 40),
+  filterInfo = (query) => {
+    //console.log("Query-->",query);
+    if(this.props.markers.length>0){
+      //console.log("markers-->",this.props.markers);
+      const filterItems = this.props.markers.filter(marker => (marker.cct.includes(query.toUpperCase())));
+      //const filterItems = this.props.markers.filter(marker => (marker.name.indexOf(query.toLowerCase()) > -1)?return marker:return null);
+      //const filterItems = this.props.markers.filter(marker => (marker.name.indexOf(query.toLowerCase()) > -1));
+      //console.log("filterItems-->",filterItems);
+      this.setState({
+        activeMarker: {},
+        selectedPlace: {},
+        showingInfoWindow: false,
+        filteredMarkers: filterItems
+      });
     }
-    const unavailableMarker = {
-      //url: 'http://image.flaticon.com/icons/svg/252/252025.svg',
-      url: Unavailable,//'./src/svg/Unavailable.svg',
-      scaledSize: new google.maps.Size(40, 40),
-    }
+    else{console.log("Sin marcadores disponibles!");}
+  }
 
+
+
+  render() {
     return (
-      <Map
-        //item
-        //xs = { 12 }
-        ref = {this.props.setRef}
-        //style = { style }
-        className = "fullSpace"
+      <MapContent 
+        setRef = { this.props.setRef }
         google = { this.props.google }
-        onClick = { this.onMapClick }
-        onReady = { this.onMapReady }
-        zoom = { MAP_ZOOM }
-        initialCenter = { MEXICO }
-        // initialCenter = { this.props.markers.length>0 ? { lat: this.props.markers[0].lat, lng: this.props.markers[0].lng }: DURANGO }
-        //center = { this.state.selectedPlace.position }
-        // initialCenter = {{ lat: 39.648209, lng: -75.711185 }}
-      >
-        {
-          this.props.markers.map(marker => {
-            //this.state.google
-            //bounds.extend(new google.maps.LatLng(marker.lat,marker.lng));
-            //position: new google.maps.LatLng(locations[i][1], locations[i][2])
-            return (
-              <Marker
-                title = { marker.name }
-                name = { marker.cct }
-                position = {{ lat: marker.lat, lng: marker.lng }}
-                infoTitle = { marker.name }
-                infoPhone = { marker.phone }
-                infoAddress = { marker.address}
-                infoTotal = { marker.totalQuantity }
-                infoAvailable = { (marker.totalQuantity - marker.totalAssigned) }
-                infoUnavailable = { marker.totalAssigned }
-                key = {marker.id}
-                icon = {((marker.totalQuantity - marker.totalAssigned)>0) ? availableMarker : unavailableMarker}
-                onClick = { this.onMarkerClick }
-                // styles={testStyle}
-                //animation={this.props.google.maps.Animation.DROP}
-              />
-            )
-          })
-        }
-        <InfoWindow
-          marker = { this.state.activeMarker }
-          visible = { this.state.showingInfoWindow }
-        >
-          <div className="infoWindow">
-            <br />
-            <h4 className="title">{ this.state.selectedPlace.name }</h4>
-            <div className="disponibilidadInfo">
-              <div className="availableInfo">
-                <strong>{ this.state.selectedPlace.infoAvailable }</strong>
-                <p>Disponibles</p>
-              </div>
-              <div className="unavailableInfo">
-                <strong>{ this.state.selectedPlace.infoUnavailable }</strong>
-                <p>Asignadas</p>
-              </div>
-            </div>
-            
-          </div>
-        </InfoWindow>
-        <SideNavBar 
-          active={ (Object.keys(this.state.selectedPlace).length == 0)?false:true } 
-          place={this.state.selectedPlace}
-        />
-      </Map>
+        //mapClick = { this.onMapClick }
+        mapReady = { this.onMapReady }
+        markers = { this.state.filteredMarkers.length>0 ? this.state.filteredMarkers:this.props.markers }
+        filterInfo = { this.filterInfo }
+        filteredMarkers = { this.state.filteredMarkers }
+        markerClick = { this.onMarkerClick }
+        activeMarker = { this.state.activeMarker }
+        showingInfoWindow = { this.state.showingInfoWindow }
+        selectedPlace = { this.state.selectedPlace }
+        //zoom = { MAP_ZOOM }
+        //mapCenter = { MEXICO }
+      />
     );
   }
 }
 
-const LoadingContainer = (props) => (
-  <div className="row">
-    <div className="loadingContainer col-md-12">
-      <Loader color="black" size={64} />
-    </div>
-  </div>
-)
-
 export default GoogleApiWrapper({
     apiKey: (API_KEY),
-    LoadingContainer: LoadingContainer,
+    LoadingContainer,
     language: 'es',
     region: 'MX' 
 })(GoogleMapsContainer);

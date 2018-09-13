@@ -1,0 +1,12 @@
+/*@Author William E. Velázquez Amarra - williamvelazquez.isc@gmail.com*/
+.alertWarning{
+	margin-bottom: 15px;
+  padding: 15px;
+  font-size: 18px;
+}
+@media (max-width: 767px) {
+	.alertWarning{
+	  padding: 5px;
+	  font-size: 13px;
+	}
+}

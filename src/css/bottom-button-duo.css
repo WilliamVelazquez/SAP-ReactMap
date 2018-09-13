@@ -1,0 +1,12 @@
+/*@Author William E. Velázquez Amarra - williamvelazquez.isc@gmail.com*/
+.miniBtnRow{
+	display: grid;
+	grid-column-gap: 10px;
+  grid-auto-flow: column;
+  /*margin-bottom: 15px;*/
+  margin-bottom: 10px;
+}
+
+.notAllowed{
+  cursor: not-allowed !important;
+}

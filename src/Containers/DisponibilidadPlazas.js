@@ -1,18 +1,19 @@
 //@Author William E. Velázquez Amarra - williamvelazquez.isc@gmail.com
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 
-import '../css/form.css';
-import '../css/select.css';
+import '../css/filter-form.css';
 
-import Select from 'react-select';
+import YoutubeButton from '../Components/YoutubeButton';
+import AccordionPanel from '../Components/AccordionPanel';
+import FilterForm from '../Components/FilterForm';
 
-import GoogleMapsContainer from './GoogleMapsContainer';
+import AlertText from '../Components/AlertText';
 import SideNavBar from '../Components/SideNavBar';
 import CubeLoader from '../Components/CubeLoader';
+import BottomButtonDuo from '../Components/BottomButtonDuo';
+import ApplicationVersion from '../Components/ApplicationVersion';
 
-const CLEAN_TEXT="Limpiar";
-const NO_RESULT_TEXT="Sin elementos encontrados";
-const SEARCH_PROMT_TEXT="Ingresa texto a buscar";
+import GoogleMapsContainer from './GoogleMapsContainer';
 
 class DisponibilidadPlazas extends Component{
 	state = {
@@ -986,62 +987,7 @@ class DisponibilidadPlazas extends Component{
 		          infoTotal: 120,
 		          infoAvailable: 50,
 		          infoUnavailable: 70
-		        },
-		        { 
-		          id: 1,
-		          title: 'CCT1',
-		          lat: 19.5326077, 
-		          lng: -99.23320799999997,
-		          infoTitle: 'CCT1',
-		          infoPhone: 'Telefono1',
-		          infoTotal: 120,
-		          infoAvailable: 50,
-		          infoUnavailable: 70
-		        },
-		        { 
-		          id: 2,
-		          title: 'CCT2',
-		          lat: 19.6626077, 
-		          lng: -99.19920799999997,
-		          infoTitle: 'CCT2',
-		          infoPhone: 'Telefono2',
-		          infoTotal: 10,
-		          infoAvailable: 6,
-		          infoUnavailable: 4
-		        },
-		        { 
-		          id: 3,
-		          title: 'CCT3',
-		          lat: 19.3126077, 
-		          lng: -99.01320799999997,
-		          infoTitle: 'CCT3',
-		          infoPhone: 'Telefono3',
-		          infoTotal: 50,
-		          infoAvailable: 26,
-		          infoUnavailable: 24
-		        },
-		        { 
-		          id: 4,
-		          title: 'CCT4',
-		          lat: 19.4318077, 
-		          lng: -99.132208,
-		          infoTitle: 'CCT4',
-		          infoPhone: '5355-5555',
-		          infoTotal: 120,
-		          infoAvailable: 0,
-		          infoUnavailable: 120
-		        },
-		        { 
-		          id: 5,
-		          title: 'CCT5',
-		          lat: 19.4336099, 
-		          lng: -99.13430799999997,
-		          infoTitle: 'CCT5',
-		          infoPhone: '5355-5555',
-		          infoTotal: 100,
-		          infoAvailable: 50,
-		          infoUnavailable: 50
-		        },
+		        }
 		      ]
 		    });
 		    //this.moveCenter(markers[0].lat,markers[0].lng);
@@ -1074,329 +1020,71 @@ class DisponibilidadPlazas extends Component{
 	render(){
 		return(
 			<div>
-				
-				<section id="formFiltros">
-					<div className="row">
+				<YoutubeButton url="https://www.youtube.com/channel/UCtAOxgu4Y3AvR9lHJjv8NGQ/videos" text=" Video tutorial" />
+				<AccordionPanel
+					title="Selección de filtros para mostrar Plazas Disponibles"
+					toggleCaret={this.toggleCaret}
+					openedPanel={this.state.openedPanel}
+				>
+					<FilterForm 
+						entidades={this.state.entidades}
+				    entidadVal={this.state.entidadVal}
+				    handleChangeEntidad={this.handleChangeEntidad}
+				    nivelesEducativos={this.state.nivelesEducativos}
+				    nivelEducativoVal={this.state.nivelEducativoVal}
+				    handleChangeNivelEducativo={this.handleChangeNivelEducativo}
+				    serviciosEducativos={this.state.serviciosEducativos}//Básica
+				    servicioEducativoVal={this.state.servicioEducativoVal}//Básica
+				    handleChangeServicioEducativo={this.handleChangeServicioEducativo}
+				    modalidades={this.state.modalidades}//Básica
+				    modalidadVal={this.state.modalidadVal}//Básica
+				    handleChangeModalidad={this.handleChangeModalidad}
+				    puestos={this.state.puestos}
+				    puestoVal={this.state.puestoVal}
+				    handleChangePuesto={this.handleChangePuesto}
+				    funciones={this.state.funciones}
+				    funcionVal={this.state.funcionVal}
+				    handleChangeFuncion={this.handleChangeFuncion}
+				    categorias={this.state.categorias}//Media Superior
+				    categoriaVal={this.state.categoriaVal}//Media Superior
+				    handleChangeCategoria={this.handleChangeCategoria}
+				    sostenimientos={this.state.sostenimientos}//Media Superior
+				    sostenimientoVal={this.state.sostenimientoVal}//Media Superior
+				    handleChangeSostenimiento={this.handleChangeSostenimiento}
+				    tiposEvaluacion={this.state.tiposEvaluacion}
+				    tipoEvaluacionVal={this.state.tipoEvaluacionVal}
+				    handleChangeTipoEvaluacion={this.handleChangeTipoEvaluacion}
+				    searchMarkers={this.searchMarkers}
+					/>
+				</AccordionPanel>
 
-						<div className="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-						  <div className="panel panel-default">
-						    <div className="panel-heading" role="tab" id="headingOne">
-						      <h4 className="panel-title">
-						        <a 
-						        role="button" 
-						        data-toggle="collapse" 
-						        data-parent="#accordion" 
-						        href="#collapseOne" 
-						        aria-expanded="true" 
-						        aria-controls="collapseOne"
-						        onClick={this.toggleCaret}
-						        >
-						          Selección de filtros para mostrar Plazas Disponibles
-						          <i className={`panel-icon glyphicon glyphicon-${this.state.openedPanel?"triangle-top":"triangle-bottom"}`}></i>
-						        </a>
-						      </h4>
-						    </div>
-						    <div id="collapseOne" className="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
-						      <div className="panel-body">
-						        <div className="formSAP">
-							      	<div>
-								      	<label>
-						              Entidad:
-						            </label>
-												<Select 
-													simpleValue
-													clearable
-													searchable
-													ref="entidadSelect"
-													options={this.state.entidades}
-													name="select-entidad"
-													value={this.state.entidadVal}
-													onChange={this.handleChangeEntidad}
-													valueKey="cveEntidad"
-													labelKey="nombreEntidad"
-													placeholder="Selecciona una Entidad Federativa..."
-													clearValueText={CLEAN_TEXT}
-													noResultsText={NO_RESULT_TEXT}
-													searchPromptText={SEARCH_PROMT_TEXT}
-												/>
-							      	</div>
+			  { /*Can be replaced with a modal*/
+					this.state.alertActive &&
+					<AlertText 
+						title="¡Sin Resultados!"
+						msg="No se encontraron centros de trabajo con plazas de acuerdo a la información proporcionada"
+					/>
+				}
 
-							      	{
-							      		this.state.entidadVal ?
-							      		<div>
-									      	<label>
-							              Nivel Educativo:
-							            </label>
-													<Select 
-														simpleValue
-														clearable
-														searchable
-														ref="nivelEducativoSelect"
-														options={this.state.nivelesEducativos}
-														name="select-nivel"
-														value={this.state.nivelEducativoVal}
-														onChange={this.handleChangeNivelEducativo}
-														valueKey="cveNivelEducativo"
-														labelKey="nombreNivelEducativo"
-														placeholder="Selecciona un Nivel Educativo..."
-														clearValueText={CLEAN_TEXT}
-														noResultsText={NO_RESULT_TEXT}
-														searchPromptText={SEARCH_PROMT_TEXT}
-													/>
-								      	</div>
-								      	: null
-							      	}
-
-							      	{
-							      		(this.state.nivelEducativoVal == 2) ?
-							      		<div>
-									      	<label>
-							              Servicio Educativo:
-							            </label>
-													<Select 
-														simpleValue
-														clearable
-														searchable
-														ref="servicioEducativoSelect"
-														options={this.state.serviciosEducativos}
-														name="select-servicio"
-														value={this.state.servicioEducativoVal}
-														onChange={this.handleChangeServicioEducativo}
-														valueKey="cveServicioEducativo"
-														labelKey="nombreServicioEducativo"
-														placeholder="Selecciona un Servicio Educativo..."
-														clearValueText={CLEAN_TEXT}
-														noResultsText={NO_RESULT_TEXT}
-														searchPromptText={SEARCH_PROMT_TEXT}
-													/>
-								      	</div>
-								      	: null
-							      	}
-
-							      	{
-							      		(this.state.nivelEducativoVal == 2 && this.state.servicioEducativoVal) ?
-							      		<div>
-									      	<label>
-							              Modalidad:
-							            </label>
-													<Select 
-														simpleValue
-														clearable
-														searchable
-														ref="modalidadSelect"
-														options={this.state.modalidades}
-														name="select-modalidad"
-														value={this.state.modalidadVal}
-														onChange={this.handleChangeModalidad}
-														valueKey="cveModalidad"
-														labelKey="nombreModalidad"
-														placeholder="Selecciona una Modalidad..."
-														clearValueText={CLEAN_TEXT}
-														noResultsText={NO_RESULT_TEXT}
-														searchPromptText={SEARCH_PROMT_TEXT}
-													/>
-								      	</div>
-								      	: null
-							      	}
-
-							      	{
-							      		(this.state.modalidadVal || this.state.nivelEducativoVal == 3) ?
-							      		<div>
-									      	<label>
-							              Puesto:
-							            </label>
-													<Select 
-														simpleValue
-														clearable
-														searchable
-														ref="puestoSelect"
-														options={this.state.puestos}
-														name="select-puesto"
-														value={this.state.puestoVal}
-														onChange={this.handleChangePuesto}
-														valueKey="cvePuesto"
-														labelKey="nombrePuesto"
-														placeholder="Selecciona un Puesto..."
-														clearValueText={CLEAN_TEXT}
-														noResultsText={NO_RESULT_TEXT}
-														searchPromptText={SEARCH_PROMT_TEXT}
-													/>
-								      	</div>
-								      	: null
-							      	}
-
-							      	{
-							      		(this.state.puestoVal) ?
-							      		<div>
-									      	<label>
-							              Función:
-							            </label>
-													<Select 
-														simpleValue
-														clearable
-														searchable
-														ref="funcionSelect"
-														options={this.state.funciones}
-														name="select-funcion"
-														value={this.state.funcionVal}
-														onChange={this.handleChangeFuncion}
-														valueKey="cveFuncion"
-														labelKey="nombreFuncion"
-														placeholder="Selecciona una Función..."
-														clearValueText={CLEAN_TEXT}
-														noResultsText={NO_RESULT_TEXT}
-														searchPromptText={SEARCH_PROMT_TEXT}
-													/>
-								      	</div>
-								      	: null
-							      	}
-
-							      	{
-							      		(this.state.nivelEducativoVal == 3 && this.state.funcionVal)  ?
-							      		<div>
-									      	<label>
-							              Categoría:
-							            </label>
-													<Select 
-														simpleValue
-														clearable
-														searchable
-														ref="categoriaSelect"
-														options={this.state.categorias}
-														name="select-categoria"
-														value={this.state.categoriaVal}
-														onChange={this.handleChangeCategoria}
-														valueKey="cveTipoCategoria"
-														labelKey="nombreCategoria"
-														placeholder="Selecciona una Categoría..."
-														clearValueText={CLEAN_TEXT}
-														noResultsText={NO_RESULT_TEXT}
-														searchPromptText={SEARCH_PROMT_TEXT}
-													/>
-								      	</div>
-								      	: null
-							      	}
-
-							      	{
-							      		this.state.categoriaVal  ?
-							      		<div>
-									      	<label>
-							              Sostenimiento:
-							            </label>
-													<Select 
-														simpleValue
-														clearable
-														searchable
-														ref="sostenimientoSelect"
-														options={this.state.sostenimientos}
-														name="select-sostenimiento"
-														value={this.state.sostenimientoVal}
-														onChange={this.handleChangeSostenimiento}
-														valueKey="cveSostenimiento"
-														labelKey="nombreSostenimiento"
-														placeholder="Selecciona un Sostenimiento..."
-														clearValueText={CLEAN_TEXT}
-														noResultsText={NO_RESULT_TEXT}
-														searchPromptText={SEARCH_PROMT_TEXT}
-													/>
-								      	</div>
-								      	: null
-							      	}
-
-							      	{
-							      		(this.state.sostenimientoVal || (this.state.nivelEducativoVal == 2 && this.state.funcionVal)) ?
-							      		<div>
-									      	<label>
-							              Tipo de Evaluación:
-							            </label>
-													<Select 
-														simpleValue
-														clearable
-														searchable
-														ref="tipoEvaluacionSelect"
-														options={this.state.tiposEvaluacion}
-														name="select-funcion"
-														value={this.state.tipoEvaluacionVal}
-														onChange={this.handleChangeTipoEvaluacion}
-														valueKey="cveTipoEvaluacion"
-														labelKey="nombreTipoEvaluacion"
-														placeholder="Selecciona un Tipo de Evaluación..."
-														clearValueText={CLEAN_TEXT}
-														noResultsText={NO_RESULT_TEXT}
-														searchPromptText={SEARCH_PROMT_TEXT}
-													/>
-								      	</div>
-								      	: null
-							      	}
-
-							      </div>
-							      
-							      {
-							      	this.state.tipoEvaluacionVal &&
-								      <div className="btnRow">
-								      	<a 
-								      		id="btnSearchPlazas"
-								      		className="btn btn-primary"
-								      		title="Ubicar plazas"
-								      		onClick={this.state.tipoEvaluacionVal?this.searchMarkers:null}
-								      		disabled={this.state.tipoEvaluacionVal?false:true}
-								      	>
-							            Ubicar Plazas 
-							            <i className="glyphicon glyphicon-map-marker"></i>
-							          </a>
-								      </div>
-							      }
-						      </div>
-						    </div>
-						  </div>
-						</div>
-						{ /*Can be replaced with a modal*/
-							this.state.alertActive &&
-							<div className="alert alert-danger alertWarning">
-								<strong>¡Sin Resultados!</strong>
-								<br />
-								No se encontraron centros de trabajo con plazas de acuerdo a la información proporcionada
-							</div>
-						}
-
-			    </div>
-			  </section>
-
-				<div className="row">
-		      <div id="mapInst" className="mapContainer col-md-12">
-						<GoogleMapsContainer markers={this.state.markers} setRef={this.setMapRef}/>
-		      </div>
-		    </div>
+				<GoogleMapsContainer markers={this.state.markers} setRef={this.setMapRef}/>
 
 		    { /*Refresh and Clear Buttons*/
-		    	this.state.tipoEvaluacionVal &&
-			    <div className="miniBtnRow">
-		      	<a 
-		      		id="btnRefreshMarkers"
-		      		className="btn btn-primary"
-		      		title="Actualizar marcadores"
-		      		onClick={this.state.tipoEvaluacionVal?this.searchMarkers:null}
-		      		disabled={this.state.tipoEvaluacionVal?false:true}
-		      	>
-	            <i className="glyphicon glyphicon-refresh"></i>
-	          </a>
-	          <a 
-		      		id="btnClearMarkers"
-		      		className="btn btn-danger"
-		      		title="Quitar marcadores"
-		      		onClick={this.state.markers?this.clearMarkers:null}
-		      		//disabled={this.state.tipoEvaluacionVal?false:true}
-		      	>
-	            <i className="glyphicon glyphicon-remove"></i>
-	          </a>
-		      </div>
+		    	this.state.markers.length>0 &&
+		    	<BottomButtonDuo
+		    		firstBtnInfo="Actualizar marcadores"
+		    		firstBtnIcon="refresh"
+		    		firstBtnHandleClick={this.state.tipoEvaluacionVal?this.searchMarkers:null}
+		    		firstBtnDisabled={this.state.tipoEvaluacionVal?false:true}
+		    		secondBtnInfo="Quitar marcadores"
+		    		secondBtnIcon="remove"
+		    		secondBtnHandleClick={this.state.markers?this.clearMarkers:null}
+						secondBtnDisabled={false}
+		    	/>
 		    }
 
 		    { /*Current Version*/
 		    	this.state.currentVersion &&
-		    	<div className="row">
-						<div className="text-center version-actual"><span>{ this.state.currentVersion }</span></div>
-					</div>
+		    	<ApplicationVersion currentVersion={ this.state.currentVersion }/>
 		    }
 
 		    { /*Loader*/

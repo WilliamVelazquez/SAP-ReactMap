@@ -1,0 +1,26 @@
+/*@Author William E. Velázquez Amarra - williamvelazquez.isc@gmail.com*/
+.btnRow{
+	/*padding: 20px;*/
+	display: grid;
+	margin-bottom: 20px;
+  /*grid-template-columns: 1fr 100px;*/
+}
+
+.btnRow a{
+	/*margin-left: auto;
+	margin: 0 auto;*/
+	display: block;
+	width: 70%;
+	font-weight: 400;
+	justify-self: center;
+	align-self: center;
+	/*width: 160px;*/
+}
+
+.btn-row{
+	min-width: 175px;
+}
+
+.notAllowed{
+  cursor: not-allowed !important;
+}

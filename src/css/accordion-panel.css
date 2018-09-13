@@ -1,0 +1,39 @@
+/*@Author William E. Velázquez Amarra - williamvelazquez.isc@gmail.com*/
+body{
+	margin:0;
+}
+
+.panel-group{
+	/*padding-left: 15px;
+  padding-right: 15px;*/
+	margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+.panel-icon{
+	/*justify-self: right;*/
+  float: right;
+}
+
+.panel-group .panel-title{
+	display: grid;
+  /*grid-template-columns: 1fr 25px;*/
+}
+
+.panel-group .panel-title a{
+	text-decoration: none;
+}
+
+@media (min-width: 767px) {
+	.panel-section{
+		font-size: 13px;
+	}
+}
+@media (max-width: 767px) {
+	.panel-section{
+		font-size: 12px;
+	}
+	.panel-group .panel-title{
+	  font-size: 15px;
+	}
+}

@@ -1,0 +1,15 @@
+/*@Author William E. Velázquez Amarra - williamvelazquez.isc@gmail.com*/
+.mapContainer{
+	height: 450px;
+	margin-bottom: 15px;
+  padding-left: 0px;
+}
+
+.fullSpace{
+	width: 100%;
+	height: 100%;
+}
+
+.gm-iv-address {
+	height: 56px !important;
+}

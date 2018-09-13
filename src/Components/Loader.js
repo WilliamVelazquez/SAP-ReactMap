@@ -1,5 +1,6 @@
 //@Author William E. Velázquez Amarra - williamvelazquez.isc@gmail.com
 import React from 'react';
+
 import Icon from './icon';
 
 function Loader(props) {

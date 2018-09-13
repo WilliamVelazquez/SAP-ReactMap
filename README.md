@@ -16,6 +16,8 @@ are vacancies available/unavailable and information about that place.
 - Find information about the selected place
 - Update Information
 - Delete current Markers
+- Search an specific marker 
+- Suggestion List of Markers Availables after giving a Clue
 
 ## Installation
 
